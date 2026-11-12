@@ -1,0 +1,9 @@
+name: "01 — Selo"
+status: "teste técnico (selo vetorial provisório)"
+background: creme
+layers:
+  - {type: logo, id: selo, pos: [960, 420], radius: 300, draw: 1.1, fade: 0.25}
+  - {type: text, text: "CADERNO", font: titulo, size: 112, tracking: 0.14, color: marinho,
+     pos: [960, 830], anchor: mm, in: "w:caderno", slide: [0, 16]}
+  - {type: text, text: "curioso", font: italico, size: 104, tracking: 0.06, color: marinho,
+     pos: [960, 948], anchor: mm, in: "start+0.6", slide: [0, 16]}

@@ -1,0 +1,11 @@
+ne_110m_land.json:
+  titulo: "Natural Earth — Land, escala 1:110m"
+  autor: "Natural Earth (naturalearthdata.com), via nvkelso/natural-earth-vector"
+  origem_url: "https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_land.geojson"
+  licenca: dominio-publico
+  licenca_url: "https://www.naturalearthdata.com/about/terms-of-use/"
+  credito: "Dados: Natural Earth (domínio público)"
+  natureza: dados
+  alteracoes: "só o contorno externo de cada polígono; coordenadas arredondadas a 3 casas (scripts/fetch_geodata.py)"
+  verificado_em: 2026-11-12
+  verificado_por: "Claude (agente) — conferir"

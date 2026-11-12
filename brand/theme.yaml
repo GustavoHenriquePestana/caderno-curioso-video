@@ -1,0 +1,46 @@
+# Identidade visual do Caderno Curioso — PROVISÓRIA (Fase 1).
+# Cores medidas nos pixels da logo enviada pelo autor (mediana por região, 12/11/2026).
+# Fontes: três serifadas candidatas (SIL OFL 1.1) em avaliação; a escolha é do autor.
+nome: Caderno Curioso
+status: provisorio
+
+cores:
+  marinho: "#113051"   # disco, anéis, letras (logo)
+  ouro: "#F5BE3C"      # átomo, núcleo (logo)
+  ocre: "#C28C1A"      # pontos e retângulos do anel (logo)
+  creme: "#F3ECE2"     # fundo (logo)
+  # Derivadas — NÃO estão na logo; usadas só em transições e sombras.
+  noite: "#0A1E34"
+  marinho_claro: "#2A4A70"
+
+transicao: noite         # cor de fundo dos fades entre cenas
+
+fontes:
+  # Troque aqui para avaliar outra candidata: libre_caslon | source_serif | crimson_pro
+  serifada: libre_caslon
+  familias:
+    libre_caslon:
+      regular: brand/fonts/LibreCaslonText-wght.ttf
+      italico: brand/fonts/LibreCaslonText-Italic-wght.ttf
+      licenca: brand/fonts/OFL-LibreCaslonText.txt
+    source_serif:
+      regular: brand/fonts/SourceSerif4-opsz-wght.ttf
+      italico: brand/fonts/SourceSerif4-Italic-opsz-wght.ttf
+      licenca: brand/fonts/OFL-SourceSerif4.txt
+    crimson_pro:
+      regular: brand/fonts/CrimsonPro-wght.ttf
+      italico: brand/fonts/CrimsonPro-Italic-wght.ttf
+      licenca: brand/fonts/OFL-CrimsonPro.txt
+    source_sans:
+      regular: brand/fonts/SourceSans3-wght.ttf
+      italico: brand/fonts/SourceSans3-Italic-wght.ttf
+      licenca: brand/fonts/OFL-SourceSans3.txt
+  # Papéis usados nos YAML de cena (campo `font`). "serifada" = família escolhida acima.
+  papeis:
+    titulo:   {familia: serifada, estilo: regular, peso: 600}
+    texto:    {familia: serifada, estilo: regular, peso: 400}
+    italico:  {familia: serifada, estilo: italico, peso: 500}
+    sans:     {familia: source_sans, estilo: regular, peso: 500}
+    sans_forte: {familia: source_sans, estilo: regular, peso: 700}
+    numeros:  {familia: source_sans, estilo: regular, peso: 600}
+    credito:  {familia: source_sans, estilo: regular, peso: 500}

@@ -1,0 +1,9 @@
+name: "02 — Tipografia"
+status: "teste técnico"
+background: marinho
+layers:
+  - {type: text, id: titulo, text: "Teste de render · Fase 1", font: titulo, size: 96, color: creme,
+     pos: [960, 470], anchor: mm, in: "start+0.1", slide: [0, 24]}
+  - {type: highlight, style: underline, rect: [560, 560, 800, 0], color: ouro, width: 6, in: "w:render", draw: 0.6}
+  - {type: text, text: "1,2 · 2.800 m · −35 °C · CO₂", font: numeros, size: 50, color: ouro,
+     pos: [960, 660], anchor: mm, in: "start+0.3", slide: [0, 16]}

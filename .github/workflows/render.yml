@@ -1,0 +1,71 @@
+name: Renderizar episódio (manual)
+# Sem gatilho automático. Antes de rodar, confira em Settings → Billing os minutos de
+# Actions e o armazenamento disponíveis no plano (repositório privado consome cota).
+on:
+  workflow_dispatch:
+    inputs:
+      episode:
+        description: Pasta do episódio
+        required: true
+        default: episodes/_smoke
+      perfil:
+        description: "preview = 720p rápido · entrega = 1080p"
+        type: choice
+        options: [preview, entrega]
+        default: preview
+      confirmo_cota:
+        description: "Conferi minutos e armazenamento disponíveis (obrigatório)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      EPISODE: ${{ inputs.episode }}
+      PERFIL: ${{ inputs.perfil }}
+    steps:
+      - name: Exigir conferência de cota
+        if: ${{ !inputs.confirmo_cota }}
+        run: |
+          echo "::error::Marque 'confirmo_cota' depois de conferir minutos e armazenamento em Settings → Billing."
+          exit 1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Instalar FFmpeg e dependências (gratuitas)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          pip install -r requirements.txt
+      - name: Estimar tempo antes de renderizar
+        run: python scripts/estimate_render.py "$EPISODE" --perfil "$PERFIL" --limite 18
+      - name: Áudio sintético (só no episódio de teste)
+        if: ${{ inputs.episode == 'episodes/_smoke' }}
+        run: python scripts/make_smoke_audio.py episodes/_smoke
+      - name: Renderizar
+        run: python -m engine.render "$EPISODE" --profile "$PERFIL"
+      - name: QA automático + folha de contato (não é aprovação)
+        run: python -m qa.run "$EPISODE" --profile "$PERFIL"
+      - name: Publicar vídeo, legendas e QA (retenção curta)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: render-${{ github.run_number }}-${{ inputs.perfil }}
+          path: |
+            renders/*/*p.mp4
+            renders/*/*p.srt
+            renders/*/*render.json
+            renders/*/qa_*/
+          if-no-files-found: warn
+          retention-days: 2

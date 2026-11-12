@@ -1,0 +1,18 @@
+# Render de teste da Fase 1 (4,5 s). Não é conteúdo editorial.
+# Áudio: tons sintéticos que imitam palavras (scripts/make_smoke_audio.py), não é voz.
+title: "Caderno Curioso — teste técnico da Fase 1"
+slug: teste_fase1
+fps: 30
+timing: timing/words.json
+
+audio:
+  loudnorm: -16          # LUFS integrados (meta de entrega para o YouTube)
+  true_peak: -1.5
+  tracks:
+    - file: audio/sintetico.wav
+      words: narracao
+      start: 0.0
+
+scenes:
+  - {file: scenes/01_selo.yaml, start: 0.0, end: 2.0}
+  - {file: scenes/02_tipografia.yaml, start: 2.0, end: 4.5, transition: {type: crossfade, duration: 0.4}}

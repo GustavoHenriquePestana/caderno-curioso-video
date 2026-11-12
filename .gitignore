@@ -1,0 +1,22 @@
+# Renders e intermediários (MP4s vão como Artifacts, nunca no git)
+renders/
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.m4a
+*.log
+
+# Python
+__pycache__/
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Segredos (nunca versionar)
+.env
+*.key

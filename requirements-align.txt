@@ -1,0 +1,2 @@
+# Opcional: tempos por palavra a partir da narração (CPU, int8). Baixa o modelo Whisper na 1ª execução.
+faster-whisper==1.2.1
